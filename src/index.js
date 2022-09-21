@@ -7,7 +7,7 @@ import  {faPlus} from "@fortawesome/free-solid-svg-icons";
 
 //styles
 
-import "./styles/index.scss";
+import "./index.css";
 
 
 library.add(faPlus); 
