@@ -1,23 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import  {faPlus} from "@fortawesome/free-solid-svg-icons";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faPlus,
+  faMinus,
+  faMagnifyingGlass,
+  faCircleUser,
+  faBagShopping,
+  faCaretDown,
+  faCaretUp,
+} from "@fortawesome/free-solid-svg-icons";
 
 //styles
 
 import "./index.css";
 
+library.add(
+  faPlus,
+  faMinus,
+  faMagnifyingGlass,
+  faCircleUser,
+  faBagShopping,
+  faCaretDown,
+  faCaretUp
+);
 
-library.add(faPlus); 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
