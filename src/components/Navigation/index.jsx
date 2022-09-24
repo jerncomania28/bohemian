@@ -267,8 +267,8 @@ const Navigation = () => {
         {/* ----- navigation proper ----- */}
         <nav
           className={
-            `shadow-md bg-white relative py-2 grid grid-cols-[100px_1fr_1fr] grid-rows-1 items-center place-content-center md:grid-cols-[1fr_1fr_300px] 
-            ${offset > 0 ? "fixed" : "block"}`
+            `shadow-md bg-white py-2 grid grid-cols-[100px_1fr_1fr] grid-rows-1 items-center place-content-center md:grid-cols-[1fr_1fr_300px] 
+            ${offset > 0 ? "fixed top-0 left-0" : "relative"}`
           }
         >
 
