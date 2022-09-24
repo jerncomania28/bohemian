@@ -108,7 +108,7 @@ const MobileMenu = ({ mobileMenu, navLinks, navLinksSub, handleSubLinkDisplay, s
 
   if (mobileMenu) {
     return (
-      <div className="absolute top-[3.5rem]  w-full">
+      <div className="absolute top-[3.5rem] bg-white z-10 w-full">
         {
           navLinks.map((navLink, _idx) => {
             return (
