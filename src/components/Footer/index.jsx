@@ -100,22 +100,27 @@ const Footer = () => {
                     })
                 }
 
-                <div className="border-2 border-white my-4 pr-2 w-full relative  md:w-auto md:my-auto">
-                    <input
-                        type="email"
-                        value={subscribeEmail}
-                        name="Email"
-                        placeholder="YOUR EMAIL ADDRESS"
-                        className="bg-transparent p-2 border-r-2 border-white text-white outline-none w-[70%] placeholder:text-white placeholder:text-[15px]"
-                        onChange={handleChange}
-                    />
-                    <button
-                        type="submit"
-                        className="uppercase text-[14px] text-white font-bold outline-none border-none py-2 pl-1 text-center w-[30%] overflow-hidden"
-                        onClick={handleSubmit}
-                    >
-                        Subscribe
-                    </button>
+                <div>
+
+                    <h4 className="text-[14px] my-4 font-bold uppercase text-white">Subscribe to Receive Update and  Special Offers!</h4>
+
+                    <div className="border-2 border-white my-4 pr-2 w-full relative  md:w-auto md:my-auto">
+                        <input
+                            type="email"
+                            value={subscribeEmail}
+                            name="Email"
+                            placeholder="YOUR EMAIL ADDRESS"
+                            className="bg-transparent p-2 border-r-2 border-white text-white outline-none w-[70%] placeholder:text-white placeholder:text-[15px]"
+                            onChange={handleChange}
+                        />
+                        <button
+                            type="submit"
+                            className="uppercase text-[14px] text-white font-bold outline-none border-none py-2 pl-1 text-center w-[30%] overflow-hidden"
+                            onClick={handleSubmit}
+                        >
+                            Subscribe
+                        </button>
+                    </div>
                 </div>
             </div>
 
