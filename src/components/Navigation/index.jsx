@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import Footer from "../Footer";
 
 //assets
 
@@ -253,7 +253,7 @@ const Navigation = () => {
 
   return (
     <>
-      <div className="w-full relative">
+      <div className="w-full relative z-10">
         {/* -------top nav paragraph -------- */}
         <p
           className={
@@ -289,7 +289,10 @@ const Navigation = () => {
 
           {/* --------------- logo --------- */}
           <div className="relative flex justify-center items-center">
-            <img src={Logo} alt="bohemian-logo" className="w-full" />
+            <Link to="/">
+              <img src={Logo} alt="bohemian-logo" className="w-full" />
+            </Link>
+
           </div>
 
 
@@ -305,6 +308,7 @@ const Navigation = () => {
         </nav>
       </div >
       <Outlet />
+      <Footer />
     </>
   )
 }

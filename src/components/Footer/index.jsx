@@ -50,7 +50,7 @@ const Footer = () => {
     }
 
     return (
-        <div className="w-full bg-black py-4 px-3 absolute bottom-0 left-0">
+        <div className="w-full bg-black py-4 px-3">
 
             <div className="md:flex md:justify-between md:items-start md:mb-3 md:mx-3 ">
 
@@ -84,7 +84,7 @@ const Footer = () => {
                                     <FontAwesomeIcon icon={`${selected === _idx ? " fa-caret-up" : "fa-caret-down"}`} className="text-white md:hidden" />
                                 </div>
 
-                                <ul className={` ${selected === _idx ? "block" : "hidden"} md:block`}>
+                                <ul className={` ${selected === _idx ? "block" : "hidden"} md:block `}>
                                     {
                                         FooterLinks[_idx].subLink.map((link, _idx) => {
                                             return <li key={_idx}>
