@@ -1,0 +1,22 @@
+[
+    {
+        "image": [
+            "assets/shop-denim.webp",
+            "assets/shop-denim.webp",
+            "assets/shop-denim.webp",
+            "assets/shop-denim.webp"
+        ],
+        "product-name": "Maxi Slip Dress With Elastic Back In Aqua",
+        "company-name": "Bohemian Traders",
+        "size": "XL",
+        "product-details": "lorem Ipsum lorem Ipsumlorem Ipsumlorem Ipsumlorem Ipsumlorem Ipsumlorem Ipsumlorem Ipsumlorem Ipsumlorem Ipsumlorem Ipsum",
+        "product-feature": "lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum",
+        "product-sizing": "lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum",
+        "price": [
+            "AUD",
+            "EUR",
+            "NZD",
+            "USD"
+        ]
+    }
+]

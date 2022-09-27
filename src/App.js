@@ -4,17 +4,18 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Routes/Home";
 import Navigation from "./components/Navigation";
 import PageNotFound from "./Routes/PageNotFound";
-import Footer from "./components/Footer";
+import AboutUs from "./Routes/AboutUs";
 
 const App = () => {
   return (
     <>
-      <Navigation />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Home />} />
+          <Route path="about-us" element={<AboutUs />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Route>
       </Routes>
-      <Footer />
     </>
   );
 };
