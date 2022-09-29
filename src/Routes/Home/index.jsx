@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-// import ShopDenim from "../../assets/shop-denim.webp";
 
-// import HeroImage from "../../assets/hero.jpg";
-
+import { useSelector } from "react-redux"
+import { selectSearchQuery } from "../../states/slices/CoreSlice";
+// import { selectSearchQuery } from "../../states/slices/CoreSlice";
 import Hero from "../../assets/hero.jpg";
 
 
@@ -19,6 +19,8 @@ const Section = ({ route, handleNavigate, background, text }) => {
 const Home = () => {
 
     const navigate = useNavigate();
+
+    const searchSelect = useSelector(selectSearchQuery);
 
     const handleNavigate = (route) => {
         navigate(route);
@@ -80,6 +82,10 @@ const Home = () => {
                 }
 
             </div>
+
+            <p>
+                {searchSelect}
+            </p>
 
 
 

@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Footer from "../Footer";
 
 //assets
 
 import Logo from "../../assets/logo.webp";
 
 //components 
+import Footer from "../Footer";
+import SearchBox from "../SearchBox";
 
 
 const useScrollPosition = () => {
@@ -23,7 +25,15 @@ const useScrollPosition = () => {
 }
 
 
-const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCurrencyDropDown, handleSetCurrency }) => {
+const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCurrencyDropDown, handleSetCurrency, handleSearchBox }) => {
+
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (route) => {
+    navigate(`/${route}`);
+  }
+
 
   return (
     <div className="flex justify-end items-center md:justify-center mr-8 ">
@@ -53,8 +63,8 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
 
       </div>
 
-      <FontAwesomeIcon icon="fa-magnifying-glass" className="mr-3  text-[20px]" />
-      <FontAwesomeIcon icon="fa-circle-user" className="mr-3 text-[20px] " />
+      <FontAwesomeIcon icon="fa-magnifying-glass" className="mr-3  text-[20px]" onClick={handleSearchBox} />
+      <FontAwesomeIcon icon="fa-circle-user" className="mr-3 text-[20px] " onClick={() => handleNavigate("login")} />
       <FontAwesomeIcon icon="fa-bag-shopping" className=" text-[20px]" />
 
     </div>
@@ -104,7 +114,7 @@ const DesktopMenu = ({ navLinks, navLinksSub }) => {
 }
 
 
-const MobileMenu = ({ mobileMenu, navLinks, navLinksSub, handleSubLinkDisplay, selected }) => {
+const MobileMenu = ({ mobileMenu, navLinks, navLinksSub, handleSubLinkDisplay, selected, handleMobileMenu }) => {
 
   if (mobileMenu) {
     return (
@@ -128,7 +138,7 @@ const MobileMenu = ({ mobileMenu, navLinks, navLinksSub, handleSubLinkDisplay, s
                   {
                     navLinksSub[_idx]?.map((subLink, _idx) => (
                       <li key={_idx} className="my-2 text-center ">
-                        <Link to={`${navLink.route}/${subLink.route}`} className={`text-[12px] uppercase font-bold hover:border-b-[2px] hover:border-black`}>{subLink.name}</Link>
+                        <Link to={`${navLink.route}/${subLink.route}`} onClick={handleMobileMenu} className={`text-[12px] uppercase font-bold hover:border-b-[2px] hover:border-black`}>{subLink.name}</Link>
                       </li>
                     ))
                   }
@@ -154,6 +164,7 @@ const Navigation = () => {
   const [selected, setSelected] = useState(null);
   const [currencyChoosen, setCurrencyChoosen] = useState(0);
   const [showCurrencyDropDown, setShowCurrencyDropDown] = useState(false);
+  const [isSearchBox, setIsSearchBox] = useState(false);
 
   const offset = useScrollPosition();
 
@@ -251,6 +262,10 @@ const Navigation = () => {
     setShowCurrencyDropDown(!showCurrencyDropDown)
   }
 
+  const handleSearchBox = () => {
+    setIsSearchBox(!isSearchBox)
+  }
+
   return (
     <>
       <div className="w-full relative z-10">
@@ -283,7 +298,7 @@ const Navigation = () => {
                 block w-[23px] h-[1px] relative rounded before:absolute before:-top-[8px] before:w-[23px] before:h-[1px] before:bg-black before:rounded after:absolute after:top-[8px] after:w-[23px] after:h-[1px] after:bg-black after:rounded transition duration-1000 ease-in-out md:hidden`}></span>
             </div>
 
-            <MobileMenu mobileMenu={mobileMenu} navLinks={navLinks} navLinksSub={navLinksSub} handleSubLinkDisplay={handleSubLinkDisplay} selected={selected} />
+            <MobileMenu mobileMenu={mobileMenu} navLinks={navLinks} navLinksSub={navLinksSub} handleSubLinkDisplay={handleSubLinkDisplay} selected={selected} handleMobileMenu={handleMobileMenu} />
 
           </div>
 
@@ -303,9 +318,14 @@ const Navigation = () => {
             currencyChoosen={currencyChoosen}
             showCurrencyDropDown={showCurrencyDropDown}
             handleSetCurrency={handleSetCurrency}
+            handleSearchBox={handleSearchBox}
           />
 
         </nav>
+
+        {
+          isSearchBox && <SearchBox handleSearchBox={handleSearchBox} />
+        }
       </div >
       <Outlet />
       <Footer />

@@ -1,14 +1,29 @@
-import { initializeApp, InitializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
+
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDRpGrH_6H8KBAwKY4CTKSEi0Z7fJ2SkRA",
-  authDomain: "bohemian-4fb58.firebaseapp.com",
-  projectId: "bohemian-4fb58",
-  storageBucket: "bohemian-4fb58.appspot.com",
-  messagingSenderId: "609147109216",
-  appId: "1:609147109216:web:000d59008459864de6a805",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
+
+const googleProvider = new GoogleAuthProvider();
+
+googleProvider.setCustomParameters({
+  prompt: "select_account",
+});
+
+export const auth = getAuth();
 
 
