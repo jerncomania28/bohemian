@@ -16,7 +16,7 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -26,4 +26,12 @@ googleProvider.setCustomParameters({
 
 export const auth = getAuth();
 
+export const createUserViaEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+  return await createUserWithEmailAndPassword(auth, email, password);
+};
 
+export const signInViaEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+  return await signInWithEmailAndPassword(auth, email, password);
+};

@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import PageNotFound from "./Routes/PageNotFound";
 import AboutUs from "./Routes/AboutUs";
 import LogIn from "./Routes/Login";
+import CreateAccount from "./Routes/CreateAccount";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="about-us" element={<AboutUs />} />
           <Route path="login" element={<LogIn />} />
+          <Route path="create-account" element={<CreateAccount />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
