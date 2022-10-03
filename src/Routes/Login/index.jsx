@@ -48,9 +48,6 @@ const LogIn = () => {
                     dispatch(setErrorMessage("User Not Found  , Email Not Valid !"));
                     dispatch(setErrorIsVisible(!errorIsVisible));
                 }
-
-
-
                 console.log(err);
 
             }

@@ -35,10 +35,14 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
   const [currentUserDisplayName, setCurrentUserDisplayName] = useState('');
   const navigate = useNavigate();
 
-  (async function () {
-    const name = await getDisplayName(auth);
-    setCurrentUserDisplayName(name);
-  })();
+  useEffect(() => {
+    (async function () {
+      const name = await getDisplayName(auth);
+      setCurrentUserDisplayName(name);
+    })();
+
+  }, [])
+
 
 
   const handleNavigate = (route) => {
@@ -73,7 +77,7 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
 
       </div>
 
-      <FontAwesomeIcon icon="fa-magnifying-glass" className="mr-1  text-[20px]" onClick={handleSearchBox} />
+      <FontAwesomeIcon icon="fa-magnifying-glass" className="mr-1 md:mr-3 text-[20px]" onClick={handleSearchBox} />
       {
         isLoggedIn ?
           (
@@ -84,7 +88,7 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
           ) : (
             <FontAwesomeIcon
               icon="fa-circle-user"
-              className="mr-3 text-[20px] "
+              className="md:mr-3 text-[20px] "
               onClick={() => handleNavigate("login")}
             />
           )
