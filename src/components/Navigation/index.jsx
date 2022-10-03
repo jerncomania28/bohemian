@@ -46,7 +46,7 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
   }
 
   return (
-    <div className="flex justify-end items-center md:justify-center mr-8 ">
+    <div className="flex justify-end items-center md:justify-center mr-8  px-2">
 
       {/* ---- change currency ---- */}
 
@@ -73,7 +73,7 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
 
       </div>
 
-      <FontAwesomeIcon icon="fa-magnifying-glass" className="mr-3  text-[20px]" onClick={handleSearchBox} />
+      <FontAwesomeIcon icon="fa-magnifying-glass" className="mr-1  text-[20px]" onClick={handleSearchBox} />
       {
         isLoggedIn ?
           (
@@ -322,7 +322,7 @@ const Navigation = () => {
         {/* ----- navigation proper ----- */}
         <nav
           className={
-            `shadow-md bg-white py-2 grid grid-cols-[100px_1fr_1fr] grid-rows-1 items-center place-content-center md:grid-cols-[1fr_1fr_300px] 
+            `shadow-md bg-white py-2 px-2 grid grid-cols-[100px_1fr_1fr] grid-rows-1 items-center place-content-center md:grid-cols-[1fr_1fr_300px] 
             ${offset > 0 ? "fixed top-0 left-0" : "relative"}`
           }
         >

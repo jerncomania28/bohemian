@@ -30,8 +30,6 @@ googleProvider.setCustomParameters({
 
 export const auth = getAuth();
 
-console.log(auth);
-
 export const createUserViaEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
   return await createUserWithEmailAndPassword(auth, email, password);
