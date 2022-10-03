@@ -17,6 +17,8 @@ import {
   faCaretDown,
   faCaretUp,
   faXmark,
+  faTriangleExclamation,
+  faCheckDouble
 } from "@fortawesome/free-solid-svg-icons";
 
 //styles
@@ -31,7 +33,9 @@ library.add(
   faBagShopping,
   faCaretDown,
   faCaretUp,
-  faXmark
+  faXmark,
+  faTriangleExclamation,
+  faCheckDouble
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

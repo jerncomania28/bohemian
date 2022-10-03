@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { selectIsLoggedIn, handleIsLoggedIn } from "../../states/slices/CoreSlice";
+
+import { authStateChange, getDisplayName, auth } from "../../utils/firebase";
 
 //assets
 
-import Logo from "../../assets/logo.webp";
+// import Logo from "../../assets/logo.webp";
 
 //components 
 import Footer from "../Footer";
@@ -27,13 +31,19 @@ const useScrollPosition = () => {
 
 const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCurrencyDropDown, handleSetCurrency, handleSearchBox }) => {
 
-
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const [currentUserDisplayName, setCurrentUserDisplayName] = useState('');
   const navigate = useNavigate();
+
+  (async function () {
+    const name = await getDisplayName(auth);
+    setCurrentUserDisplayName(name);
+  })();
+
 
   const handleNavigate = (route) => {
     navigate(`/${route}`);
   }
-
 
   return (
     <div className="flex justify-end items-center md:justify-center mr-8 ">
@@ -64,7 +74,21 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
       </div>
 
       <FontAwesomeIcon icon="fa-magnifying-glass" className="mr-3  text-[20px]" onClick={handleSearchBox} />
-      <FontAwesomeIcon icon="fa-circle-user" className="mr-3 text-[20px] " onClick={() => handleNavigate("login")} />
+      {
+        isLoggedIn ?
+          (
+            <div className=" mx-1 md:mx-2">
+              <button onClick={() => navigate("/orders")} className="uppercase font-bold">{currentUserDisplayName}</button>
+            </div>
+
+          ) : (
+            <FontAwesomeIcon
+              icon="fa-circle-user"
+              className="mr-3 text-[20px] "
+              onClick={() => handleNavigate("login")}
+            />
+          )
+      }
       <FontAwesomeIcon icon="fa-bag-shopping" className=" text-[20px]" />
 
     </div>
@@ -168,6 +192,8 @@ const Navigation = () => {
 
   const offset = useScrollPosition();
 
+  const dispatch = useDispatch();
+
   const navLinks = [
     { name: "What's new", route: "whats-new" },
     { name: "women", route: "women" },
@@ -242,6 +268,20 @@ const Navigation = () => {
     3: 'USD'
   }
 
+  useEffect(() => {
+    const unsubscribeFn = () => {
+      const unsubscribe = authStateChange((user) => {
+        const _ac = user ? true : false;
+        dispatch(handleIsLoggedIn(_ac));
+      })
+
+      return unsubscribe;
+    }
+
+    unsubscribeFn();
+
+  }, [dispatch]);
+
   const handleMobileMenu = () => {
     setMobileMenu(!mobileMenu);
   }
@@ -304,8 +344,9 @@ const Navigation = () => {
 
           {/* --------------- logo --------- */}
           <div className="relative flex justify-center items-center">
-            <Link to="/">
-              <img src={Logo} alt="bohemian-logo" className="w-full" />
+            <Link to="/" className="uppercase font-bold text-[20px]">
+              {/* <img src={Logo} alt="bohemian-logo" className="w-full" /> */}
+              bohemian
             </Link>
 
           </div>
