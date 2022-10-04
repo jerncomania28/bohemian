@@ -1,6 +1,7 @@
 {
   "name": "bohemian",
   "version": "0.1.0",
+  "homepage":"https://illustrious-dolphin-edc801.netlify.app/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
