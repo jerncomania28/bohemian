@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {selectErrorIsVisible, setErrorMessage, setErrorIsVisible } from "../../states/slices/CoreSlice";
+import { selectErrorIsVisible, setErrorMessage, setErrorIsVisible } from "../../states/slices/CoreSlice";
 import { signInViaEmailAndPassword} from "../../utils/firebase";
 
 
@@ -38,6 +38,7 @@ const LogIn = () => {
         } else {
             try {
                 await signInViaEmailAndPassword(Email, Password);
+
                 navigate("/orders");
             } catch (err) {
 

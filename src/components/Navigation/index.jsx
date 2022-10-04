@@ -3,7 +3,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { selectIsLoggedIn, handleIsLoggedIn } from "../../states/slices/CoreSlice";
+import { selectIsLoggedIn, handleIsLoggedIn, selectCurrentDisplayName, handleCurrentDisplayName } from "../../states/slices/CoreSlice";
 
 import { authStateChange, getDisplayName, auth } from "../../utils/firebase";
 
@@ -32,17 +32,17 @@ const useScrollPosition = () => {
 const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCurrencyDropDown, handleSetCurrency, handleSearchBox }) => {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const [currentUserDisplayName, setCurrentUserDisplayName] = useState('');
+  const currentUserDisplayName = useSelector(selectCurrentDisplayName);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  useEffect(() => {
+
+  auth && (
     (async function () {
       const name = await getDisplayName(auth);
-      setCurrentUserDisplayName(name);
-    })();
-
-  }, [])
-
+      dispatch(handleCurrentDisplayName(name));
+    })()
+  )
 
 
   const handleNavigate = (route) => {
@@ -93,7 +93,7 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
             />
           )
       }
-      <FontAwesomeIcon icon="fa-bag-shopping" className=" text-[20px]" />
+      <FontAwesomeIcon icon="fa-bag-shopping" className=" text-[20px] mx-1" />
 
     </div>
 
@@ -326,7 +326,7 @@ const Navigation = () => {
         {/* ----- navigation proper ----- */}
         <nav
           className={
-            `shadow-md bg-white py-2 px-2 grid grid-cols-[100px_1fr_1fr] grid-rows-1 items-center place-content-center md:grid-cols-[1fr_1fr_300px] 
+            `shadow-md bg-white py-2 px-2 grid grid-cols-[100px_1fr_1fr] grid-rows-1 items-center place-content-center md:grid-cols-[1fr_1fr_300px] w-full 
             ${offset > 0 ? "fixed top-0 left-0" : "relative"}`
           }
         >

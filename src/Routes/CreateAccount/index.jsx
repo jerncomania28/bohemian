@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
-    setCurrentUser,
+    handleCurrentDisplayName,
     selectErrorIsVisible,
     setErrorMessage,
     setErrorIsVisible,
@@ -56,7 +56,7 @@ const CreateAccount = () => {
             try {
                 const response = await createUserViaEmailAndPassword(Email, Password);
                 createUserDoc(response.user, { displayName: `${otherProps.firstName} ${otherProps.lastName}`, phone: otherProps.Phone, address: otherProps.addressLine, "company name": otherProps.companyName, });
-                dispatch(setCurrentUser(otherProps.firstName));
+                dispatch(handleCurrentDisplayName(otherProps.firstName));
                 navigate("/orders");
             } catch (err) {
                 if (err.code === "auth/email-already-exists") {
