@@ -18,7 +18,10 @@ import {
   faCaretUp,
   faXmark,
   faTriangleExclamation,
-  faCheckDouble
+  faCheckDouble,
+  faStar,
+  faCreditCard,
+  faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 
 //styles
@@ -35,7 +38,10 @@ library.add(
   faCaretUp,
   faXmark,
   faTriangleExclamation,
-  faCheckDouble
+  faCheckDouble,
+  faStar,
+  faCreditCard,
+  faTruck
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

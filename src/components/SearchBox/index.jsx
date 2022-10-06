@@ -31,8 +31,8 @@ const SearchBox = ({ handleSearchBox }) => {
                         className="w-[80%] py-3 outline-none border-none indent-[15px] bg-white placeholder:uppercase placeholder:font-bold md:w-full"
                     />
                     <div className="w-[20%] md:w-[100px]  flex justify-around items-center ">
-                        <FontAwesomeIcon icon="fa-magnifying-glass" className="text-[20px]" onClick={handleSubmit} />
-                        <FontAwesomeIcon icon="fa-xmark" className="text-[25px]" onClick={handleSearchBox} />
+                        <FontAwesomeIcon icon="fa-magnifying-glass" className="text-[20px] cursor-pointer" onClick={handleSubmit} />
+                        <FontAwesomeIcon icon="fa-xmark" className="text-[25px] cursor-pointer" onClick={handleSearchBox} />
                     </div>
                 </div>
             </div>

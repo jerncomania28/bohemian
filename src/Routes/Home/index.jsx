@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllProducts } from "../../states/slices/productSlice";
+import Hero from "../../assets/shop-atlethics.webp";
 
-import { useSelector } from "react-redux"
-import { selectSearchQuery } from "../../states/slices/CoreSlice";
-// import { selectSearchQuery } from "../../states/slices/CoreSlice";
-import Hero from "../../assets/hero.jpg";
+
+//components  
+import CartItem from "../../components/CartItem";
+
 
 
 
@@ -19,12 +23,17 @@ const Section = ({ route, handleNavigate, background, text }) => {
 const Home = () => {
 
     const navigate = useNavigate();
-
-    const searchSelect = useSelector(selectSearchQuery);
+    const dispatch = useDispatch();
+    const { products, isLoading } = useSelector((state) => state.products);
 
     const handleNavigate = (route) => {
         navigate(route);
     }
+
+    useEffect(() => {
+        dispatch(getAllProducts());
+
+    }, [dispatch])
 
 
     const sectionImages = {
@@ -54,43 +63,120 @@ const Home = () => {
     }
 
 
+    const exploreImages = {
+        0: {
+            route: "/women/separates",
+            background: "bg-shop-loungewear",
+            text: "Shop Separates"
+        },
+        1: {
+            route: "/women/jackets-knits",
+            background: "bg-shop-jacket-knits",
+            text: "Shop OutWear"
+        },
+        2: {
+            route: "/athletic",
+            background: "bg-shop-active-wears",
+            text: "Shop ActiveWear"
+        }
+    }
 
     return (
-        <div className="w-full relative p-3">
 
-            <div className=" w-full relative h-[100vh] ">
-                <img src={Hero} alt="hero" className="w-full h-full object-cover" />
-                <div className=" absolute top-[50%] left-[50%] transform -translate-x-[50%] translate-y-[80%] md:-translate-y-[50%] flex justify-center items-center flex-col mb-[4rem] ">
-                    <h1 className="text-white font-bold uppercase my-4 text-[30px] tracking-widest md:text-[60px] whitespace-nowrap">New Arrivals</h1>
-                    <button className="p-3 border-[1px] border-white text-white uppercase outline-none cursor-pointer" onClick={() => handleNavigate("/whats-new/new-arrivals")}>
-                        Shop Now
-                    </button>
+        <div className="w-full relative ">
+
+            <div className=" relative p-3">
+
+                <div className=" w-full relative h-[100vh] ">
+                    <img src={Hero} alt="hero" className="w-full h-full object-cover object-top" />
+                    <div className=" absolute top-[50%] left-[50%] transform -translate-x-[50%] translate-y-[80%] md:-translate-y-[50%] flex justify-center items-center flex-col mb-[4rem] ">
+                        <h1 className="text-white font-bold uppercase my-4 text-[30px] tracking-widest md:text-[60px] whitespace-nowrap">New Arrivals</h1>
+                        <button className="p-3 border-[1px] border-white text-white uppercase outline-none cursor-pointer" onClick={() => handleNavigate("/whats-new/new-arrivals")}>
+                            Shop Now
+                        </button>
+                    </div>
+                </div>
+
+
+                <div className="flex justify-center items-center flex-wrap mt-4">
+
+                    {
+                        Object.keys(sectionImages).map(_idx => (<Section
+                            route={sectionImages[_idx].route}
+                            handleNavigate={handleNavigate}
+                            background={sectionImages[_idx].background}
+                            text={sectionImages[_idx].text}
+                            key={_idx}
+                        />))
+                    }
+
+                </div>
+
+                <div className=" w-full my-3 inline-flex overflow-x-scroll no-scrollbar">
+
+                    {
+                        isLoading && <p>Loading ...</p>
+                    }
+                    {
+                        products.slice(0, 4).map((cartItem, _idx) => <CartItem product={cartItem} key={_idx} />)
+                    }
+
                 </div>
             </div>
 
+            <div className="w-full h-[80vh] my-3 bg-shop-event-wears bg-cover bg-center relative">
 
-            <div className="flex justify-center items-center flex-wrap mt-4">
-
-                {
-                    Object.keys(sectionImages).map(_idx => (<Section
-                        route={sectionImages[_idx].route}
-                        handleNavigate={handleNavigate}
-                        background={sectionImages[_idx].background}
-                        text={sectionImages[_idx].text}
-                        key={_idx}
-                    />))
-                }
+                <button className="p-3 px-5 font-bold border-[1px] border-white text-white uppercase text-[13px] outline-none cursor-pointer relative top-[50%] left-[10%] transition duration-500 ease-in hover:bg-white hover:text-black" onClick={() => handleNavigate("/women/event-wears")}>
+                    Shop Event Wear
+                </button>
 
             </div>
 
-            <p>
-                {searchSelect}
-            </p>
+
+            <div className="w-full relative ">
+
+                <h1 className="w-full text-center uppercase text-[23px] font-thin py-3">Explore </h1>
+
+                <div className="flex justify-center items-center flex-wrap mt-4">
+                    {
+                        Object.keys(exploreImages).map(_idx => (<Section
+                            route={exploreImages[_idx].route}
+                            handleNavigate={handleNavigate}
+                            background={exploreImages[_idx].background}
+                            text={exploreImages[_idx].text}
+                            key={_idx}
+                        />))
+                    }
+                </div>
+
+            </div>
+
+            <div className="w-[95%] md:w-[90%] rounded mx-auto flex flex-col justify-center items-start my-[3rem] px-4 md:px-6 py-4 bg-orange-50 md:flex-row">
+
+                <h1 className="text-[30px] font-thin p-2 w-full md:w-1/2">
+                    MADE FOR THE MODERN BOHEMIAN
+                </h1>
+                <div className="flex flex-col justify-center items-center md:ml-[1rem] p-2 w-full md:w-1/2 ">
+                    <p className="leading-7 text-[18px]">
+                        We blend classic, fashion forward pieces including elevated basics with bohemian detailing.
+                        Since our inception, our aim has been to provide size inclusive fashion basics for the modern bohemian.
+                        We seek to be an environmentally and socially responsible company;
+                        as such we work closely with our suppliers to ensure ethical conditions for workers.
+                        We are continually working towards providing the best clothing and accessories,
+                        with the least environmental and social harm possible.
+                    </p>
+                    <button className="p-3 mt-4 px-10 font-bold border-[1px] border-black text-black uppercase text-[13px] outline-none cursor-pointer self-start" onClick={() => handleNavigate("/about-us")}>
+                        About Us
+                    </button>
 
 
+                </div>
 
+            </div>
 
         </div>
+
+
     )
 }
 

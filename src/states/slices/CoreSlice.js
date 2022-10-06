@@ -6,6 +6,7 @@ const initialState = {
   errorMessage: "",
   errorIsVisible: false,
   currrentDisplayName: "",
+  isQuickViewOpen: false,
 };
 
 const CoreSlice = createSlice({
@@ -31,6 +32,9 @@ const CoreSlice = createSlice({
     handleCurrentDisplayName(state, action) {
       state.currrentDisplayName = action.payload;
     },
+    setQuickView(state, action) {
+      state.isQuickViewOpen = action.payload;
+    },
   },
 });
 
@@ -40,6 +44,7 @@ export const selectErrorIsVisible = (state) => state.core.errorIsVisible;
 export const selectErrorMessage = (state) => state.core.errorMessage;
 export const selectCurrentDisplayName = (state) =>
   state.core.currrentDisplayName;
+export const selectIsQuickView = (state) => state.core.isQuickViewOpen;
 
 export const {
   searchQueryFn,
@@ -48,6 +53,7 @@ export const {
   setErrorIsVisible,
   handleCancelError,
   handleCurrentDisplayName,
+  setQuickView,
 } = CoreSlice.actions;
 
 export default CoreSlice.reducer;

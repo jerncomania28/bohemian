@@ -50,13 +50,13 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
   }
 
   return (
-    <div className="flex justify-end items-center md:justify-center mr-8  px-2">
+    <div className="flex justify-center items-center px-2">
 
       {/* ---- change currency ---- */}
 
       <div className="hidden relative md:flex">
         {/* ---currency display --- */}
-        <button className="px-3 py-1 mr-3 " onClick={handleShowDropDown} >
+        <button className="px-4 py-1 mr-3 whitespace-nowrap " onClick={handleShowDropDown} >
           <span>$</span>
           <span className="mx-1">{currency[currencyChoosen]}</span>
           <FontAwesomeIcon icon={showCurrencyDropDown ? "fa-caret-up" : "fa-caret-down"} />
@@ -77,23 +77,29 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
 
       </div>
 
-      <FontAwesomeIcon icon="fa-magnifying-glass" className="mr-1 md:mr-3 text-[20px]" onClick={handleSearchBox} />
+      <FontAwesomeIcon icon="fa-magnifying-glass" className="mx-2 text-[14px] md:text-[20px] cursor-pointer" onClick={handleSearchBox} />
       {
         isLoggedIn ?
           (
-            <div className=" mx-1 md:mx-2">
-              <button onClick={() => navigate("/orders")} className="uppercase font-bold">{currentUserDisplayName}</button>
-            </div>
+            <button onClick={() => navigate("/orders")} className="uppercase font-bold outline-none border-none text-[12px]">{currentUserDisplayName}</button>
 
           ) : (
             <FontAwesomeIcon
               icon="fa-circle-user"
-              className="md:mr-3 text-[20px] "
+              className="mx-2 text-[20px] "
               onClick={() => handleNavigate("login")}
             />
           )
       }
-      <FontAwesomeIcon icon="fa-bag-shopping" className=" text-[20px] mx-1" />
+
+      <div className="relative cursor-pointer" onClick={() => handleNavigate("carts")}>
+        <FontAwesomeIcon
+          icon="fa-bag-shopping"
+          className=" text-[14px] md:text-[20px] mx-2"
+        />
+        <span className="animate-ping absolute top-1 right-1 inline-flex w-[10px] h-[10px] rounded-full bg-red-500 opacity-75"></span>
+        <div className="w-[10px] h-[10px] rounded-full bg-red-400 absolute top-1 right-1"></div>
+      </div>
 
     </div>
 
@@ -326,7 +332,7 @@ const Navigation = () => {
         {/* ----- navigation proper ----- */}
         <nav
           className={
-            `shadow-md bg-white py-2 px-2 grid grid-cols-[100px_1fr_1fr] grid-rows-1 items-center place-content-center md:grid-cols-[1fr_1fr_300px] w-full 
+            `shadow-md bg-white py-2 w-full flex justify-between items-center box-border
             ${offset > 0 ? "fixed top-0 left-0" : "relative"}`
           }
         >
@@ -348,9 +354,8 @@ const Navigation = () => {
 
           {/* --------------- logo --------- */}
           <div className="relative flex justify-center items-center">
-            <Link to="/" className="uppercase font-bold text-[20px]">
-              {/* <img src={Logo} alt="bohemian-logo" className="w-full" /> */}
-              bohemian
+            <Link to="/" className="uppercase font-bold text-[15px] md:text-[20px]  whitespace-nowrap">
+              bohemian traders
             </Link>
 
           </div>

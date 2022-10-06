@@ -10,6 +10,7 @@ import LogIn from "./Routes/Login";
 import CreateAccount from "./Routes/CreateAccount";
 import ForgotPassword from "./Routes/ForgotPassword";
 import Orders from "./Routes/Orders";
+import Carts from "./Routes/Carts";
 
 const App = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="create-account" element={<CreateAccount />} />
           {isLoggedIn && <Route path="orders" element={<Orders />} />}
           <Route path="forgot-password" element={<ForgotPassword />} />
+          <Route path="carts" element={<Carts />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

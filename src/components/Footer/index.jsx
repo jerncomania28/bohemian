@@ -81,10 +81,10 @@ const Footer = () => {
                             <div key={_idx} className="text-white">
                                 <div className="flex justify-between items-center border-b-[1px] border-dotted border-white py-2 my-3 md:border-none" onClick={() => handleSelectedLink(_idx)}>
                                     <p className="uppercase font-bold text-[13px] ml-2 ">{FooterLinks[_idx].link}</p>
-                                    <FontAwesomeIcon icon={`${selected === _idx ? " fa-caret-up" : "fa-caret-down"}`} className="text-white md:hidden" />
+                                    <FontAwesomeIcon icon={`${selected === _idx ? " fa-caret-up" : "fa-caret-down"}`} className="text-white md:hidden transition duration-1000 ease-in-out" />
                                 </div>
 
-                                <ul className={` ${selected === _idx ? "block" : "hidden"} md:block `}>
+                                <ul className={` ${selected === _idx ? "block" : "hidden"} md:block  transition duration-1000 ease-in-out`}>
                                     {
                                         FooterLinks[_idx].subLink.map((link, _idx) => {
                                             return <li key={_idx}>
