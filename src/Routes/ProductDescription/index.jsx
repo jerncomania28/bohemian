@@ -12,7 +12,8 @@ import {
 
 const ProductDescription = () => {
 
-    const [product, setProduct] = useState();
+
+    const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(0);
     const [itemInCart, setItemInCart] = useState(false);
     const { id } = useParams();
@@ -27,11 +28,8 @@ const ProductDescription = () => {
 
     useEffect(() => {
         if (!products) return
-
         const _product = products.find(product => product.id === +id);
-        
         setProduct(_product);
-
     }, [id, products])
 
 
@@ -41,14 +39,13 @@ const ProductDescription = () => {
         if (obj) {
             const { quantity } = obj;
             setItemInCart(true);
-
             setQuantity(quantity);
         } else {
             setItemInCart(false);
             setQuantity(0);
         }
 
-    }, [items, product]);
+    }, [items , product]);
 
 
     const handleRemoveProduct = () => {

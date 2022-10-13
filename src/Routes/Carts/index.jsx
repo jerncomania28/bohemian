@@ -11,6 +11,9 @@ const CartItem = ({ product }) => {
 
     const dispatch = useDispatch();
 
+    const handleDeleteProduct = () => {
+        dispatch(deleteProductFromCart(product))
+    }
     return (
         <div className=" w-[95%] md:w-[80%] mx-auto relative flex justify-between items-center border-black border-y-[1px] px-4 py-2 md:px-8">
 
@@ -22,7 +25,7 @@ const CartItem = ({ product }) => {
                 <p>{`$${price} X ${quantity}`}</p>
             </div>
             <div className="cart-item__delete-btn"  >
-                <FontAwesomeIcon icon="fa-trash-can" alt="delete-item.img" onClick={() => dispatch(deleteProductFromCart(product))} className={"text-[25px]"} />
+                <FontAwesomeIcon icon="fa-trash-can" alt="delete-item.img" onClick={handleDeleteProduct} className={"text-[25px]"} />
             </div>
 
         </div>
