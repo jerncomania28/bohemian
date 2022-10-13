@@ -12,7 +12,7 @@ export const getAllProducts = createAsyncThunk(
 );
 
 const initialState = {
-  products: [],
+  products: null,
   isLoading: true,
 };
 

@@ -29,12 +29,14 @@ const useScrollPosition = () => {
 }
 
 
-const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCurrencyDropDown, handleSetCurrency, handleSearchBox }) => {
+const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCurrencyDropDown, handleSetCurrency, handleSearchBox, setMobileMenu }) => {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const currentUserDisplayName = useSelector(selectCurrentDisplayName);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { items } = useSelector(state => state.cart);
 
 
   auth && (
@@ -49,8 +51,13 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
     navigate(`/${route}`);
   }
 
+  const closeMobileMenu = (fn = () => null) => {
+    setMobileMenu(false);
+    fn();
+  }
+
   return (
-    <div className="flex justify-center items-center px-2">
+    <div className="flex justify-center items-center px-3">
 
       {/* ---- change currency ---- */}
 
@@ -77,30 +84,39 @@ const NavigationIcons = ({ handleShowDropDown, currency, currencyChoosen, showCu
 
       </div>
 
-      <FontAwesomeIcon icon="fa-magnifying-glass" className="mx-2 text-[14px] md:text-[20px] cursor-pointer" onClick={handleSearchBox} />
-      {
-        isLoggedIn ?
-          (
-            <button onClick={() => navigate("/orders")} className="uppercase font-bold outline-none border-none text-[12px]">{currentUserDisplayName}</button>
+      <div className="flex justify-between items-center">
 
-          ) : (
-            <FontAwesomeIcon
-              icon="fa-circle-user"
-              className="mx-2 text-[20px] "
-              onClick={() => handleNavigate("login")}
-            />
-          )
-      }
+        <FontAwesomeIcon icon="fa-magnifying-glass" className="text-[14px] md:text-[20px] cursor-pointer" onClick={() => closeMobileMenu(handleSearchBox)} />
+        {
+          isLoggedIn ?
+            (
+              <button onClick={() => navigate("/orders")} className=" mx-2 uppercase font-bold outline-none border-none text-[12px]">{currentUserDisplayName}</button>
 
-      <div className="relative cursor-pointer" onClick={() => handleNavigate("carts")}>
-        <FontAwesomeIcon
-          icon="fa-bag-shopping"
-          className=" text-[14px] md:text-[20px] mx-2"
-        />
-        <span className="animate-ping absolute top-1 right-1 inline-flex w-[10px] h-[10px] rounded-full bg-red-500 opacity-75"></span>
-        <div className="w-[10px] h-[10px] rounded-full bg-red-400 absolute top-1 right-1"></div>
+            ) : (
+              <FontAwesomeIcon
+                icon="fa-circle-user"
+                className="mx-2 text-[20px] "
+                onClick={() => closeMobileMenu(handleNavigate("login"))}
+              />
+            )
+        }
+
+        <div className="relative cursor-pointer" onClick={() => closeMobileMenu(handleNavigate("carts"))}>
+          <FontAwesomeIcon
+            icon="fa-bag-shopping"
+            className=" text-[14px] md:text-[20px]"
+          />
+          {
+            Boolean(items.length) && (
+              <>
+                <span className="animate-ping absolute top-1 -right-1 inline-flex w-[10px] h-[10px] rounded-full bg-red-500 opacity-75 md:top-1"></span>
+                <div className="w-[10px] h-[10px] rounded-full bg-red-400 absolute top-1 -right-1 md:top-1"></div>
+              </>
+            )
+          }
+
+        </div>
       </div>
-
     </div>
 
   )
@@ -152,7 +168,7 @@ const MobileMenu = ({ mobileMenu, navLinks, navLinksSub, handleSubLinkDisplay, s
 
   if (mobileMenu) {
     return (
-      <div className="absolute top-[3.5rem] bg-white z-10 w-full">
+      <div className="absolute top-[3.5rem] left-0 bg-white z-10 w-full">
         {
           navLinks.map((navLink, _idx) => {
             return (
@@ -332,7 +348,7 @@ const Navigation = () => {
         {/* ----- navigation proper ----- */}
         <nav
           className={
-            `shadow-md bg-white py-2 w-full flex justify-between items-center box-border
+            `shadow-md bg-white py-2 w-full flex justify-around items-center box-border
             ${offset > 0 ? "fixed top-0 left-0" : "relative"}`
           }
         >
@@ -369,6 +385,7 @@ const Navigation = () => {
             showCurrencyDropDown={showCurrencyDropDown}
             handleSetCurrency={handleSetCurrency}
             handleSearchBox={handleSearchBox}
+            setMobileMenu={setMobileMenu}
           />
 
         </nav>

@@ -5,7 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 
 //global states
 import { Provider } from "react-redux";
-import Store from "./states/store";
+import { persistor, store } from "./states/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -22,11 +23,13 @@ import {
   faStar,
   faCreditCard,
   faTruck,
+  faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 
 //styles
 
 import "./index.css";
+import ProductManager from "./components/ProductManager";
 
 library.add(
   faPlus,
@@ -41,15 +44,19 @@ library.add(
   faCheckDouble,
   faStar,
   faCreditCard,
-  faTruck
+  faTruck,
+  faTrashCan
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider store={Store}>
-        <App />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <ProductManager />
+          <App />
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

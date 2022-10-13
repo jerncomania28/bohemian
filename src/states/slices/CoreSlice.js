@@ -7,6 +7,7 @@ const initialState = {
   errorIsVisible: false,
   currrentDisplayName: "",
   isQuickViewOpen: false,
+  lightBoxCurrentProduct: null,
 };
 
 const CoreSlice = createSlice({
@@ -35,6 +36,9 @@ const CoreSlice = createSlice({
     setQuickView(state, action) {
       state.isQuickViewOpen = action.payload;
     },
+    setLightBoxCurrentProduct(state, action) {
+      state.lightBoxCurrentProduct = action.payload;
+    },
   },
 });
 
@@ -54,6 +58,7 @@ export const {
   handleCancelError,
   handleCurrentDisplayName,
   setQuickView,
+  setLightBoxCurrentProduct,
 } = CoreSlice.actions;
 
 export default CoreSlice.reducer;

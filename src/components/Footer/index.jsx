@@ -50,7 +50,7 @@ const Footer = () => {
     }
 
     return (
-        <div className="w-full bg-black py-4 px-3">
+        <div className="w-full bg-[#16171d] py-4 px-3">
 
             <div className="md:flex md:justify-between md:items-start md:mb-3 md:mx-3 ">
 

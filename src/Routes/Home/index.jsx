@@ -1,12 +1,8 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getAllProducts } from "../../states/slices/productSlice";
 import Hero from "../../assets/shop-atlethics.webp";
 
-
 //components  
-import CartItem from "../../components/CartItem";
+import ProductAdvertise from "../../components/ProductsAdvertise";
 
 
 
@@ -23,18 +19,11 @@ const Section = ({ route, handleNavigate, background, text }) => {
 const Home = () => {
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const { products, isLoading } = useSelector((state) => state.products);
+
 
     const handleNavigate = (route) => {
         navigate(route);
     }
-
-    useEffect(() => {
-        dispatch(getAllProducts());
-
-    }, [dispatch])
-
 
     const sectionImages = {
         0: {
@@ -81,11 +70,13 @@ const Home = () => {
         }
     }
 
+
     return (
 
         <div className="w-full relative ">
 
             <div className=" relative p-3">
+
 
                 <div className=" w-full relative h-[100vh] ">
                     <img src={Hero} alt="hero" className="w-full h-full object-cover object-top" />
@@ -112,17 +103,10 @@ const Home = () => {
 
                 </div>
 
-                <div className=" w-full my-3 inline-flex overflow-x-scroll no-scrollbar">
-
-                    {
-                        isLoading && <p>Loading ...</p>
-                    }
-                    {
-                        products.slice(0, 4).map((cartItem, _idx) => <CartItem product={cartItem} key={_idx} />)
-                    }
-
-                </div>
             </div>
+
+            <ProductAdvertise />
+
 
             <div className="w-full h-[80vh] my-3 bg-shop-event-wears bg-cover bg-center relative">
 
