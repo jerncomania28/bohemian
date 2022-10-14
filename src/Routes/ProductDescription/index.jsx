@@ -28,7 +28,7 @@ const ProductDescription = () => {
 
     useEffect(() => {
         if (!products) return
-        const _product = products.find(product => product.id === +id);
+        const _product = products.find(product => product.id === Number(id));
         setProduct(_product);
     }, [id, products])
 
@@ -45,7 +45,7 @@ const ProductDescription = () => {
             setQuantity(0);
         }
 
-    }, [items , product]);
+    }, [items, product]);
 
 
     const handleRemoveProduct = () => {
@@ -64,7 +64,7 @@ const ProductDescription = () => {
 
         product && (
             <>
-                <div className="w-full relative flex flex-col items-center justify-center my-4 mb-10 md:flex-row">
+                <div className="w-full relative flex flex-col items-center justify-center my-4 mb-10 snap-y snap-mandatory snap-start md:flex-row">
                     <div className="w-full px-4 pt-2 mt-[1rem] md:w-[50%] h-[400px] relative">
                         <img src={product.image} alt="view" className="w-[80% mx-auto h-full object-fit" />
                     </div>

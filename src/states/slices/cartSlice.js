@@ -18,7 +18,7 @@ const CartSlice = createSlice({
         return acc + item.quantity * item.price;
       }, 0);
 
-      state.total = total;
+      state.total = total.toFixed(2);
     },
 
     // cart count Fn -- total number of items in cart -- start
