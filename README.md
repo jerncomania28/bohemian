@@ -1,6 +1,6 @@
 # Bohemian Traders Clone
 
-An attempt to clone the (bohemiantraders.com)[bohemiantraders.com]
+An attempt to clone the [bohemiantraders.com](bohemiantraders.com)
 
 [Home Page](./src/assets/project/home-page.png)
 
