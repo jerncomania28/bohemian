@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Bohemian Traders Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An attempt to clone the (bohemiantraders.com)[bohemiantraders.com]
 
-## Available Scripts
+[Home Page](./src/assets/project/home-page.png)
 
-In the project directory, you can run:
+## Functionalities Implemented
 
-### `npm start`
+- Adding Item to Cart.
+- Removing Item From Cart.
+- Displaying Total Number Of Item Present In Cart.
+- Displaying Total Cost Of All Items Present In Cart.
+- Increasing And Decreasing Quantity Of Item In Cart.
+- Authentication with firebase e.g signInWithEmailAndPassword etc
+- Forgot Password
+- Creating an Account
+- Quick View Feature
+- Currency Change Feature
+- Search Feature
+- Filter Products By Categories
+- View Product Extensively
+- Error Message Display
+- Multiple DropDown Navigation on Mobile
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Interface Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> home page Display
 
-### `npm test`
+![Home page](./src/assets/project/home-page.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> shopping categories
 
-### `npm run build`
+![categories](./src/assets/project/home-sections-page.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> product display Page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![product display](./src/assets/project/increase-decrease-page.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> sign In page
 
-### `npm run eject`
+![sign in](./src/assets/project/signin-page.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+> create account page
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![create account](./src/assets/project/create-account-page.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Error page
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Error Page](./src/assets/project/error-page.png)
 
-## Learn More
+> forgot password page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![forgot password](/src/assets/project/forgot-password-page.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> carta total page
 
-### Code Splitting
+![cart total](./src/assets/project/cart-total-page.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+> view product option
 
-### Analyzing the Bundle Size
+![view product](./src/assets/project/view-products-home.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+> Quick View Product
 
-### Making a Progressive Web App
+![Quick View](./src/assets/project/quick-view-pop.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Links
 
-### Advanced Configuration
+- Solution URL: [Source code](https://github.com/jerncomania28/bohemian)
+- Live Site URL: [Site](bohemian-clone.netlify.app)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Built with
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Tailwind CSS
+- Flexbox
+- Mobile-first workflow
+- Redux toolkit
+- React - JS library
+- Firebase (Authentication & Database)
