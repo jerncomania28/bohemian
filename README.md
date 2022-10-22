@@ -28,6 +28,10 @@ An attempt to clone the (bohemiantraders.com)[bohemiantraders.com]
 
 ![Home page](./src/assets/project/home-page.png)
 
+> categories 
+
+![all products](./src/assets/project/products-display.png)
+
 > shopping categories
 
 ![categories](./src/assets/project/home-sections-page.png)
